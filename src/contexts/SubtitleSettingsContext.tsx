@@ -35,7 +35,7 @@ export const SubtitleSettingsContext =
     setState: () => {},
   });
 
-const LOCALSTORAGE_KEY = 'react-vid-player_subtitle_settings';
+const LOCALSTORAGE_KEY = 'react-all-player_subtitle_settings';
 
 export const SubtitleSettingsProvider: React.FC<
   SubtitleSettingsProviderProps

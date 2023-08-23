@@ -1,6 +1,6 @@
-# Contributing to react-vid-player
+# Contributing to react-all-player
 
-Thanks for contributing to react-vid-player!
+Thanks for contributing to react-all-player!
 
 ## Install
 

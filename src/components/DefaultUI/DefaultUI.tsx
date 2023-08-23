@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useInteract } from '../../contexts/VideoInteractingContext';
-import { Components, react-vid-playerProps } from '../../contexts/VideoPropsContext';
+import { Components, react-all-playerProps } from '../../contexts/VideoPropsContext';
 import useDoubleTap from '../../hooks/useDoubleTap';
 import useGlobalHotKeys from '../../hooks/useGlobalHotKeys';
 import { clamp, classNames } from '../../utils';
@@ -33,7 +33,7 @@ const defaultComponents: Components = {
   MobileVolumeSlider,
 };
 
-const DefaultUI = React.forwardRef<HTMLVideoElement, react-vid-playerProps>(
+const DefaultUI = React.forwardRef<HTMLVideoElement, react-all-playerProps>(
   (
     {
       hlsRef = React.createRef(),

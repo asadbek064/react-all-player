@@ -1,5 +1,5 @@
 {
-  "name": "react-vid-player-example",
+  "name": "react-all-player-example",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "dependencies": {
-    "react-vid-player": "link:../",
+    "react-all-player": "link:../",
     "react": "link:../node_modules/react",
     "react-app-polyfill": "^1.0.0",
     "react-dom": "link:../node_modules/react-dom/profiling",

@@ -1,30 +1,47 @@
-# react-vid-player
+# react-all-player
 
-<a href='https://www.npmjs.com/package/react-vid-player'>
-  <img src='https://img.shields.io/npm/v/react-vid-player.svg' alt='Latest npm version'>
-</a>
+react-all-player is a simple, lightweight, accessible and customizable React media player that supports modern browsers.
 
-<p align='center'>
-  Simple React component that provides versatile and good looking UI video player.
-</p>
+[Checkout the demo](https://react-all-player.asadbek.dev)
+
+[![npm version](https://img.shields.io/npm/v/react-all-player.svg)](https://www.npmjs.com/package/react-all-player) 
+
+[![Screenshot of react-all-player ](https://#/)](https://react-all-player.asadbek.dev)
+
+# Features
+
+- 📼 **HTML Video & Audio, YouTube & Vimeo** - support for the major formats
+- 💪 **Accessible** - full support for VTT captions and screen readers
+- 🔧 **Customizable** - make the player look how you want with the markup you want
+- 📱 **Responsive** - works with any screen size
+- 📹 **Streaming** - support for hls.js, and dash.js streaming playback
+- 🎛 **API** - toggle playback, volume, seeking, and more through a standardized API
+- 🎤 **Events** - no messing around with Vimeo and YouTube APIs, all events are standardized across formats
+- 🔎 **Fullscreen** - supports native fullscreen with fallback to "full window" modes
+- ⌨️ **Shortcuts - supports keyboard shortcuts
+- 🖥 **Picture-in-Picture** - supports picture-in-picture mode
+- 📱 **Playsinline** - supports the `playsinline` attribute
+- 🏎 **Speed controls** - adjust speed on the fly
+- 📖 **Multiple captions** - support for multiple caption tracks
+- 👌 **Preview thumbnails** - support for displaying preview thumbnails
 
 ## Usage
 
 ```bash
-npm install react-vid-player # or yarn add react-vid-player
+npm install react-all-player # or yarn add react-all-player
 ```
 
 ```jsx
-import react-vid-player from 'react-vid-player';
+import react-all-player from 'react-all-player';
 
-<react-vid-player
+<react-all-player
   sources={[
     {
-      file: 'https://www.googleapis.com/drive/v3/files/1Q6LsjpWgPoYIs6GaD8G6lNZRM2-VJXAY?alt=media&key=AIzaSyCFwU3MAtwS2TgPPEObV-hDXexH83ae1Fs',
+      file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4',
       label: '1080p',
     },
     {
-      file: 'https://www.googleapis.com/drive/v3/files/1sKXS6VU8uUGeW8WPKDp2dXxwAJ96Tk9c?alt=media&key=AIzaSyCFwU3MAtwS2TgPPEObV-hDXexH83ae1Fs',
+      file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4',
       label: '720p',
     },
   ]}
@@ -32,12 +49,12 @@ import react-vid-player from 'react-vid-player';
     {
       lang: 'en',
       language: 'English',
-      file: 'https://subtitles.netpop.app/subtitles/20211116/1637057950304_国王排名 2_英语.srt',
+      file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt',
     },
     {
-      lang: 'CN',
-      language: 'Chinese',
-      file: 'https://subtitles.netpop.app/subtitles/20211116/1637057969656_国王排名 2_越南语.srt',
+      lang: 'fr',
+      language: 'French',
+      file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt',
     },
   ]}
 />;
@@ -46,12 +63,12 @@ import react-vid-player from 'react-vid-player';
 
 ## Props
 
-react-vid-player accepts video element props and these specific props
+react-all-player accepts video element props and these specific props
 
 | Prop              | Type                                                                                                   | Description                                                 | Default                                                                                                         | Required |
 | ----------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------- |
-| `sources`         | [Source](https://github.com/asadbek064/react-vid-player/blob/main/src/types/types.ts#L1)[]                     | An array of sources contain `file`, `label` and `type`      | `null`                                                                                                          | `true`   |
-| `subtitles`       | [Subtitle](https://github.com/asadbek064/react-vid-player/blob/main/src/types/types.ts#L6)[]                   | An array of subtitles contain `file`, `lang` and `language` | `null`                                                                                                          | `false`  |
+| `sources`         | [Source](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L1)[]                     | An array of sources contain `file`, `label` and `type`      | `null`                                                                                                          | `true`   |
+| `subtitles`       | [Subtitle](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L6)[]                   | An array of subtitles contain `file`, `lang` and `language` | `null`                                                                                                          | `false`  |
 | `hlsRef`          | `React.MutableRefObject<Hls \| null>`                                                                  | `hls.js` instance ref                                       | `React.createRef()`                                                                                             | `false`  |
 | `dashRef`         | `React.MutableRefObject<DashJS.MediaPlayerClass \| null>`                                              | `dashjs` instance ref                                       | `React.createRef()`                                                                                             | `false`  |
 | `hlsConfig`       | `Hls['config']`                                                                                        | `hls.js` config                                             | `{}`                                                                                                            | `false`  |
@@ -60,23 +77,23 @@ react-vid-player accepts video element props and these specific props
 | `onDashInit`      | `(dash: DashJS.MediaPlayerClass): void`                                                                | A function that called after dashjs initialization          | `() => null`                                                                                                    | `false`  |
 | `onInit`          | `(videoEl: HTMLVideoElement): void`                                                                    | A function that called after video initialization           | `() => null`                                                                                                    | `false`  |
 | `ref`             | `React.MutableRefObject<HTMLVideoElement \| null>`                                                     | `video` element ref                                         | `null`                                                                                                          | `false`  |
-| `i18n`            | [I18n](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L41)        | Translations                                                | [Default Translations](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L69) | `false`  |
-| `hotkeys`         | [Hotkey](https://github.com/asadbek064/react-vid-player/blob/main/src/types/types.ts#L25)[]                    | Hotkeys (shortcuts)                                         | [Default Hotkeys](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)      | `false`  |
-| `components`      | [Component](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)[] | See [Customization](#customization)                         | [Default components](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)   | `false`  |
+| `i18n`            | [I18n](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L41)        | Translations                                                | [Default Translations](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L69) | `false`  |
+| `hotkeys`         | [Hotkey](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L25)[]                    | Hotkeys (shortcuts)                                         | [Default Hotkeys](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)      | `false`  |
+| `components`      | [Component](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)[] | See [Customization](#customization)                         | [Default components](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)   | `false`  |
 | `thumbnail`       | string                                                                                                 | Thumbnails on progress bar hover                            | `null`                                                                                                          | `false`  |
 
 ## Customization
 
-You can customize the player by passing defined components with `components` props. See [defined components](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)
+You can customize the player by passing defined components with `components` props. See [defined components](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)
 
 By passing components, the passed components will override default existing components. Allow you to customize the player how you want it to be.
 
 ### Example
 
 ```jsx
-import react-vid-player, { TimeIndicator } from 'react-vid-player';
+import react-all-player, { TimeIndicator } from 'react-all-player';
 
-<react-vid-player
+<react-all-player
   {...props}
   components={{
     Controls: () => {
@@ -92,18 +109,18 @@ import react-vid-player, { TimeIndicator } from 'react-vid-player';
 />;
 ```
 
-_Note: use built-in [hooks](https://github.com/asadbek064/react-vid-player/tree/main/src/hooks) and [components](https://github.com/asadbek064/react-vid-player/tree/main/src/components) for better customization_
+_Note: use built-in [hooks](https://github.com/asadbek064/react-all-player/tree/main/src/hooks) and [components](https://github.com/asadbek064/react-all-player/tree/main/src/components) for better customization_
 
 ### Override structure
 
-react-vid-player use this [default structure](https://github.com/asadbek064/react-vid-player/blob/main/src/components/DefaultUI/DefaultUI.tsx)
+react-all-player use this [default structure](https://github.com/asadbek064/react-all-player/blob/main/src/components/DefaultUI/DefaultUI.tsx)
 
-To override it, simply pass your own structure as react-vid-player's `children`
+To override it, simply pass your own structure as react-all-player's `children`
 
 ```jsx
-import react-vid-player, { Controls, Player, Overlay } from 'react-vid-player';
+import react-all-player, { Controls, Player, Overlay } from 'react-all-player';
 
-<react-vid-player {...props}>
+<react-all-player {...props}>
   <div>
     <div>
       <Player />
@@ -115,28 +132,20 @@ import react-vid-player, { Controls, Player, Overlay } from 'react-vid-player';
       <Overlay />
     </div>
     <div>
-      <p>Look I'm over here!</p>
+      <p>here!</p>
     </div>
   </div>
-</react-vid-player>;
+</react-all-player>;
 ```
 
 ## Methods
 
-You can access to the `video` element by passing `ref` to react-vid-player and use all its methods.
+You can access to the `video` element by passing `ref` to react-all-player and use all its methods.
 
 ## Supported formats
 
-react-vid-player supports all `video` element supported formats and `HLS` format
+react-all-player supports all `video` element supported formats and `HLS` format
 
 ## Contributing
 
-See the [contribution guidelines](github.com/asadbek064/react-vid-player/blob/main/CONTRIBUTING.md) before creating a pull request.
-
-## Other video players
-
-- [react-player](https://github.com/CookPete/react-player)
-- [react-tuby](https://github.com/napthedev/react-tuby)
-- [video-react](https://github.com/video-react/video-react)
-- [plyr](https://github.com/sampotts/plyr)
-- [video.js](https://github.com/videojs/video.js)
+See the [contribution guidelines](github.com/asadbek064/react-all-player/blob/main/CONTRIBUTING.md) before creating a pull request.

@@ -5,14 +5,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['react-vid-player']
+    exclude: ['react-all-player']
   },
   build: {
-    commonjsOptions: { exclude: ['react-vid-player'], include: [] }
+    commonjsOptions: { exclude: ['react-all-player'], include: [] }
   },
   server: {
     watch: {
-      ignored: ['!**/node_modules/react-vid-player/**']
+      ignored: ['!**/node_modules/react-all-player/**']
     }
   }
 })

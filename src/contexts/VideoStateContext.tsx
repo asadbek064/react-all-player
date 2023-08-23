@@ -42,7 +42,7 @@ export const VideoStateContext = React.createContext<VideoContextProps>({
   setState: () => {},
 });
 
-const LOCALSTORAGE_KEY = 'react-vid-player_video_settings';
+const LOCALSTORAGE_KEY = 'react-all-player_video_settings';
 
 export const VideoStateContextProvider: React.FC<VideoContextProviderProps> = ({
   children,

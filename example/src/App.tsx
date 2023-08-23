@@ -1,7 +1,7 @@
 import React from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import editorTheme from 'prism-react-renderer/themes/nightOwl'
-import Player from 'react-vid-player'
+import Player from 'react-all-player'
 import { buildAbsoluteURL } from 'url-toolkit'
 
 const initialCode = `

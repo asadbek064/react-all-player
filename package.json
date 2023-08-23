@@ -33,7 +33,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-vid-player",
+  "name": "react-all-player",
   "author": "asadbek064",
   "module": "dist/index.js",
   "size-limit": [
