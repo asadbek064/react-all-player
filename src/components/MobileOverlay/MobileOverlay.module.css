@@ -1,0 +1,101 @@
+.overlayContainer {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 300ms, opacity 300ms;
+  position: relative;
+}
+
+.overlayContainer.inactive {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlayContainer.inactive * {
+  pointer-events: none;
+}
+
+.uiContainer {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 300ms, opacity 300ms;
+}
+
+.dragMessage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 1rem;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 300ms, opacity 300ms;
+}
+
+.dragMessageIcon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.playerControlsContainer {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.playerControlsInnerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  pointer-events: none;
+}
+
+.playerControlsInnerContainer > * {
+  pointer-events: auto;
+}
+
+:global(.control-button) {
+  color: white;
+}
+
+.backwardButton {
+  width: 3rem;
+  height: 3rem;
+}
+
+.playButton {
+  width: 4rem;
+  height: 4rem;
+}
+
+.forwardButton {
+  width: 3rem;
+  height: 3rem;
+}
+
+.mobileTopButtons {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobileTopButtons :global(.control-button) {
+  width: 2rem;
+  height: 2rem;
+}

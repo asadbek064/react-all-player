@@ -1,0 +1,11 @@
+.popperContainer {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 300ms, visibility 300ms;
+  z-index: 50;
+}
+
+.popperContainer.isOpen {
+  visibility: visible;
+  opacity: 1;
+}
