@@ -5,7 +5,7 @@
 </a>
 
 <p align='center'>
-  A simple React component that provide good looking UI video player
+  Simple React component that provides versatile and good looking UI video player.
 </p>
 
 ## Usage
@@ -35,15 +35,14 @@ import react-vid-player from 'react-vid-player';
       file: 'https://subtitles.netpop.app/subtitles/20211116/1637057950304_国王排名 2_英语.srt',
     },
     {
-      lang: 'vi',
-      language: 'Tiếng Việt',
+      lang: 'CN',
+      language: 'Chinese',
       file: 'https://subtitles.netpop.app/subtitles/20211116/1637057969656_国王排名 2_越南语.srt',
     },
   ]}
 />;
 ```
 
-Or [play](https://hoangvu12.github.io/react-vid-player/) around with this component
 
 ## Props
 
@@ -51,8 +50,8 @@ react-vid-player accepts video element props and these specific props
 
 | Prop              | Type                                                                                                   | Description                                                 | Default                                                                                                         | Required |
 | ----------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------- |
-| `sources`         | [Source](https://github.com/hoangvu12/react-vid-player/blob/main/src/types/types.ts#L1)[]                     | An array of sources contain `file`, `label` and `type`      | `null`                                                                                                          | `true`   |
-| `subtitles`       | [Subtitle](https://github.com/hoangvu12/react-vid-player/blob/main/src/types/types.ts#L6)[]                   | An array of subtitles contain `file`, `lang` and `language` | `null`                                                                                                          | `false`  |
+| `sources`         | [Source](https://github.com/asadbek064/react-vid-player/blob/main/src/types/types.ts#L1)[]                     | An array of sources contain `file`, `label` and `type`      | `null`                                                                                                          | `true`   |
+| `subtitles`       | [Subtitle](https://github.com/asadbek064/react-vid-player/blob/main/src/types/types.ts#L6)[]                   | An array of subtitles contain `file`, `lang` and `language` | `null`                                                                                                          | `false`  |
 | `hlsRef`          | `React.MutableRefObject<Hls \| null>`                                                                  | `hls.js` instance ref                                       | `React.createRef()`                                                                                             | `false`  |
 | `dashRef`         | `React.MutableRefObject<DashJS.MediaPlayerClass \| null>`                                              | `dashjs` instance ref                                       | `React.createRef()`                                                                                             | `false`  |
 | `hlsConfig`       | `Hls['config']`                                                                                        | `hls.js` config                                             | `{}`                                                                                                            | `false`  |
@@ -61,14 +60,14 @@ react-vid-player accepts video element props and these specific props
 | `onDashInit`      | `(dash: DashJS.MediaPlayerClass): void`                                                                | A function that called after dashjs initialization          | `() => null`                                                                                                    | `false`  |
 | `onInit`          | `(videoEl: HTMLVideoElement): void`                                                                    | A function that called after video initialization           | `() => null`                                                                                                    | `false`  |
 | `ref`             | `React.MutableRefObject<HTMLVideoElement \| null>`                                                     | `video` element ref                                         | `null`                                                                                                          | `false`  |
-| `i18n`            | [I18n](https://github.com/hoangvu12/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L41)        | Translations                                                | [Default Translations](https://github.com/hoangvu12/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L69) | `false`  |
-| `hotkeys`         | [Hotkey](https://github.com/hoangvu12/react-vid-player/blob/main/src/types/types.ts#L25)[]                    | Hotkeys (shortcuts)                                         | [Default Hotkeys](https://github.com/hoangvu12/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)      | `false`  |
-| `components`      | [Component](https://github.com/hoangvu12/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)[] | See [Customization](#customization)                         | [Default components](https://github.com/hoangvu12/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)   | `false`  |
+| `i18n`            | [I18n](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L41)        | Translations                                                | [Default Translations](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L69) | `false`  |
+| `hotkeys`         | [Hotkey](https://github.com/asadbek064/react-vid-player/blob/main/src/types/types.ts#L25)[]                    | Hotkeys (shortcuts)                                         | [Default Hotkeys](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)      | `false`  |
+| `components`      | [Component](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)[] | See [Customization](#customization)                         | [Default components](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)   | `false`  |
 | `thumbnail`       | string                                                                                                 | Thumbnails on progress bar hover                            | `null`                                                                                                          | `false`  |
 
 ## Customization
 
-You can customize the player by passing defined components with `components` props. See [defined components](https://github.com/hoangvu12/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)
+You can customize the player by passing defined components with `components` props. See [defined components](https://github.com/asadbek064/react-vid-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)
 
 By passing components, the passed components will override default existing components. Allow you to customize the player how you want it to be.
 
@@ -93,11 +92,11 @@ import react-vid-player, { TimeIndicator } from 'react-vid-player';
 />;
 ```
 
-_Note: use built-in [hooks](https://github.com/hoangvu12/react-vid-player/tree/main/src/hooks) and [components](https://github.com/hoangvu12/react-vid-player/tree/main/src/components) for better customization_
+_Note: use built-in [hooks](https://github.com/asadbek064/react-vid-player/tree/main/src/hooks) and [components](https://github.com/asadbek064/react-vid-player/tree/main/src/components) for better customization_
 
 ### Override structure
 
-react-vid-player use this [default structure](https://github.com/hoangvu12/react-vid-player/blob/main/src/components/DefaultUI/DefaultUI.tsx)
+react-vid-player use this [default structure](https://github.com/asadbek064/react-vid-player/blob/main/src/components/DefaultUI/DefaultUI.tsx)
 
 To override it, simply pass your own structure as react-vid-player's `children`
 
@@ -132,7 +131,7 @@ react-vid-player supports all `video` element supported formats and `HLS` format
 
 ## Contributing
 
-See the [contribution guidelines](github.com/hoangvu12/react-vid-player/blob/main/CONTRIBUTING.md) before creating a pull request.
+See the [contribution guidelines](github.com/asadbek064/react-vid-player/blob/main/CONTRIBUTING.md) before creating a pull request.
 
 ## Other video players
 
