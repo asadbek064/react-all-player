@@ -32,9 +32,9 @@ npm install react-all-player # or yarn add react-all-player
 ```
 
 ```jsx
-import react-all-player from 'react-all-player';
+import ReactAllPlayer from 'react-all-player';
 
-<react-all-player
+<ReactAllPlayer
   sources={[
     {
       file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4',
@@ -91,9 +91,9 @@ By passing components, the passed components will override default existing comp
 ### Example
 
 ```jsx
-import react-all-player, { TimeIndicator } from 'react-all-player';
+import ReactAllPlayer, { TimeIndicator } from 'react-all-player';
 
-<react-all-player
+<ReactAllPlayer
   {...props}
   components={{
     Controls: () => {
@@ -118,9 +118,9 @@ react-all-player use this [default structure](https://github.com/asadbek064/reac
 To override it, simply pass your own structure as react-all-player's `children`
 
 ```jsx
-import react-all-player, { Controls, Player, Overlay } from 'react-all-player';
+import ReactAllPlayer, { Controls, Player, Overlay } from 'react-all-player';
 
-<react-all-player {...props}>
+<ReactAllPlayer {...props}>
   <div>
     <div>
       <Player />
@@ -135,7 +135,7 @@ import react-all-player, { Controls, Player, Overlay } from 'react-all-player';
       <p>here!</p>
     </div>
   </div>
-</react-all-player>;
+</ReactAllPlayer>;
 ```
 
 ## Methods
@@ -148,4 +148,4 @@ react-all-player supports all `video` element supported formats and `HLS` format
 
 ## Contributing
 
-See the [contribution guidelines](github.com/asadbek064/react-all-player/blob/main/CONTRIBUTING.md) before creating a pull request.
+See the [contribution guidelines](https://github.com/asadbek064/react-all-player/blob/fcb06801a60a8df033832333b990409a090558e9/CONTRIBUTING.md) before creating a pull request.

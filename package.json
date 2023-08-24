@@ -1,5 +1,5 @@
 {
-  "version": "1.6.4",
+  "version": "2.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -82,5 +82,24 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "description": "react-all-player is a simple, lightweight, accessible and customizable React media player that supports modern browsers.",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asadbek064/react-all-player.git"
+  },
+  "keywords": [
+    "react-player",
+    "video",
+    "player",
+    "hlsjs",
+    "dashjs"
+  ],
+  "bugs": {
+    "url": "https://github.com/asadbek064/react-all-player/issues"
+  },
+  "homepage": "https://github.com/asadbek064/react-all-player#readme"
 }

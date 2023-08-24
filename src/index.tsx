@@ -4,10 +4,10 @@ import './reset.css';
 import * as React from 'react';
 import GlobalContext from './contexts/GlobalContext';
 import { VideoContextProvider } from './contexts/VideoContext';
-import { react-all-playerProps } from './contexts/VideoPropsContext';
+import { ReactVidPlayerProps } from './contexts/VideoPropsContext';
 import DefaultUI from './components/DefaultUI';
 
-const InnerPlayer = React.forwardRef<HTMLVideoElement, react-all-playerProps>(
+const InnerPlayer = React.forwardRef<HTMLVideoElement, ReactVidPlayerProps>(
   ({ hlsRef = React.createRef(), children, ...props }, ref) => {
     const videoRef = React.useRef<HTMLVideoElement | null>(null);
 
@@ -31,7 +31,7 @@ const InnerPlayer = React.forwardRef<HTMLVideoElement, react-all-playerProps>(
   }
 );
 
-const react-all-player = React.forwardRef<HTMLVideoElement, react-all-playerProps>(
+const ReactVidPlayer = React.forwardRef<HTMLVideoElement, ReactVidPlayerProps>(
   (
     { sources, subtitles = [], hlsRef = React.createRef(), children, ...props },
     ref
@@ -53,11 +53,11 @@ const react-all-player = React.forwardRef<HTMLVideoElement, react-all-playerProp
 );
 
 InnerPlayer.displayName = 'InnerPlayer';
-react-all-player.displayName = 'react-all-player';
+ReactVidPlayer.displayName = 'react-vid-player';
 
 export * from './components';
 export * from './hooks';
 export * from './hotkeys';
 export * from './contexts';
 
-export default react-all-player;
+export default ReactVidPlayer;

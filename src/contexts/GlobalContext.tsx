@@ -1,10 +1,10 @@
 import React from 'react';
 import { SubtitleSettingsProvider } from './SubtitleSettingsContext';
 import { VideoInteractingContextProvider } from './VideoInteractingContext';
-import { react-all-playerProps, VideoPropsProvider } from './VideoPropsContext';
+import { ReactVidPlayerProps, VideoPropsProvider } from './VideoPropsContext';
 import { VideoStateContextProvider } from './VideoStateContext';
 
-const GlobalContext: React.FC<react-all-playerProps> = ({
+const GlobalContext: React.FC<ReactVidPlayerProps> = ({
   sources,
   subtitles = [],
   children,

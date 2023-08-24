@@ -66,7 +66,7 @@ export type Components = {
   MobileControls: React.FC;
 };
 
-export interface react-all-playerProps extends PlayerProps {
+export interface ReactVidPlayerProps extends PlayerProps {
   thumbnail?: string;
   i18n?: I18n;
   shortcuts?: Shortcuts;
@@ -136,9 +136,9 @@ const mergeHotkeys = (main: HotKey[], target: HotKey[]) => {
 
 export const VideoPropsContext =
   // @ts-ignore
-  React.createContext<Required<react-all-playerProps>>(null);
+  React.createContext<Required<ReactVidPlayerProps>>(null);
 
-export const VideoPropsProvider: React.FC<Partial<react-all-playerProps>> = ({
+export const VideoPropsProvider: React.FC<Partial<ReactVidPlayerProps>> = ({
   children,
   ...props
 }) => {
