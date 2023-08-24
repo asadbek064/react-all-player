@@ -2,12 +2,11 @@
 
 react-all-player is a simple, lightweight, accessible and customizable React media player that supports modern browsers.
 
-[Checkout the demo](https://react-all-player.asadbek.dev)
+[Checkout the demo](https://reactallplayer.asadbek.dev)
 
-[![npm version](https://cdn.discordapp.com/attachments/1013281108508561488/1144321837661179965/image.png)](https://www.npmjs.com/package/react-all-player) 
+[![npm version](https://img.shields.io/npm/v/react-all-player.svg)](https://www.npmjs.com/package/react-all-player) 
 
-[![Screenshot of react-all-player ](https://#/)](https://react-all-player.asadbek.dev)
-
+[![Screenshot of react-all-player ](https://cdn.discordapp.com/attachments/1013281108508561488/1144321837661179965/image.png)](https://reactallplayer.asadbek.dev)
 # Features
 
 - 📼 **HTML Video & Audio, YouTube & Vimeo** - support for the major formats
