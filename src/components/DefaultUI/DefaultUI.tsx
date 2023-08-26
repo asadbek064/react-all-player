@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useInteract } from '../../contexts/VideoInteractingContext';
-import { Components, ReactVidPlayerProps } from '../../contexts/VideoPropsContext';
+import {
+  Components,
+  ReactVidPlayerProps,
+} from '../../contexts/VideoPropsContext';
 import useDoubleTap from '../../hooks/useDoubleTap';
 import useGlobalHotKeys from '../../hooks/useGlobalHotKeys';
 import { clamp, classNames } from '../../utils';
@@ -8,7 +11,7 @@ import { isMobile } from '../../utils/device';
 import { IndicatorRef } from '../Indicator/Indicator';
 import styles from './DefaultUI.module.css';
 
-import Controls, { MobileVolumeSlider } from '../Controls';
+import Controls from '../Controls';
 import MobileBackwardIndicator from '../Indicator/MobileBackwardIndicator';
 import MobileForwardIndicator from '../Indicator/MobileForwardIndicator';
 import MobileControls from '../MobileControls';
@@ -30,7 +33,6 @@ const defaultComponents: Components = {
   Overlay,
   Player,
   Subtitle,
-  MobileVolumeSlider,
 };
 
 const DefaultUI = React.forwardRef<HTMLVideoElement, ReactVidPlayerProps>(
@@ -85,9 +87,6 @@ const DefaultUI = React.forwardRef<HTMLVideoElement, ReactVidPlayerProps>(
         Overlay: components?.Overlay || defaultComponents.Overlay,
         Player: components?.Player || defaultComponents.Player,
         Subtitle: components?.Subtitle || defaultComponents.Subtitle,
-        MobileVolumeSlider:
-          components?.MobileVolumeSlider ||
-          defaultComponents.MobileVolumeSlider,
       }),
       [components]
     );
@@ -238,10 +237,6 @@ const DefaultUI = React.forwardRef<HTMLVideoElement, ReactVidPlayerProps>(
       >
         <uiComponents.MobileBackwardIndicator ref={backIndicatorRef} />
         <uiComponents.MobileForwardIndicator ref={forwardIndicatorRef} />
-
-        {!disableVolumeSlider && (
-          <uiComponents.MobileVolumeSlider ref={volumeSliderRef} />
-        )}
 
         <uiComponents.Subtitle />
 

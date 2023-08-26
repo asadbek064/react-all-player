@@ -8,24 +8,25 @@ const initialCode = `
   <Player
     sources={[
       {
-        file: 'https://artplayer.org/assets/sample/video.mp4'
+        file: 'https://huggingface.co/datasets/light064/ReactAllPlayer/resolve/main/View_From_A_Blue_Moon_Trailer-1080p.mp4'
       }
     ]}
     subtitles={[
       {
-        lang: 'jp',
-        language: 'Japanese',
-        file: 'https://artplayer.org/assets/sample/subtitle.jp.srt'
+        lang: 'en',
+        language: 'English',
+        file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt'
       },
       {
-        lang: 'cn',
-        language: 'Chinese',
-        file: 'https://artplayer.org/assets/sample/subtitle.cn.srt'
+        lang: 'fr',
+        language: 'French ',
+        file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt'
       }
     ]}
     className="object-contain w-full h-full"
     thumbnail="https://preview.zorores.com/8b/8bc17ab9537166f2abb7e0bef2b57e23/thumbnails/sprite.vtt"
     autoPlay
+    muted
   />
 `
 

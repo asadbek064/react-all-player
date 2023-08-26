@@ -28,6 +28,7 @@ export interface PlayerProps extends React.HTMLAttributes<HTMLVideoElement> {
   onDashInit?: (dash: DashJS.MediaPlayerClass, currentSource: Source) => void;
   onInit?: (videoEl: HTMLVideoElement) => void;
   autoPlay?: boolean;
+  muted?: boolean;
   preferQuality?: (qualities: string[]) => string;
   hlsVersion?: string;
   dashVersion?: string;
@@ -54,6 +55,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
       onDashInit = noop,
       onInit = noop,
       autoPlay = false,
+      muted = false,
       preferQuality,
       hlsVersion,
       dashVersion,
@@ -442,6 +444,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
       <video
         ref={playerRef}
         autoPlay={autoPlay}
+        muted={muted}
         preload="auto"
         className={styles.video}
         playsInline

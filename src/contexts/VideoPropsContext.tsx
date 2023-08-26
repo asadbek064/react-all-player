@@ -54,9 +54,6 @@ export type Components = {
   MobileForwardIndicator: React.ForwardRefExoticComponent<
     React.RefAttributes<IndicatorRef>
   >;
-  MobileVolumeSlider: React.ForwardRefExoticComponent<
-    React.RefAttributes<IndicatorRef>
-  >;
   Player: React.ForwardRefExoticComponent<
     PlayerProps & React.RefAttributes<HTMLVideoElement>
   >;
@@ -68,6 +65,7 @@ export type Components = {
 
 export interface ReactVidPlayerProps extends PlayerProps {
   thumbnail?: string;
+  placeholder?: string;
   i18n?: I18n;
   shortcuts?: Shortcuts;
   hotkeys?: HotKey[];

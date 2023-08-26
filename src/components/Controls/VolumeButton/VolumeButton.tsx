@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useVideo } from '../../../contexts/VideoContext';
 import { useVideoProps } from '../../../contexts/VideoPropsContext';
 import useHotKey, { parseHotKey } from '../../../hooks/useHotKey';
@@ -24,6 +24,12 @@ const VolumeButton = () => {
   const hotkey = useHotKey('volume');
   const previousVolume = useRef(videoState.volume);
 
+  useEffect(() => {
+    if(videoEl?.muted) {
+      videoState.volume = 0;
+    }
+  })
+
   const VolumeComponent = useMemo(() => {
     const entries = Object.entries(VolumeComponents).sort(
       (a, b) => Number(a[0]) - Number(b[0])
@@ -40,6 +46,8 @@ const VolumeButton = () => {
 
   const handleClick = useCallback(() => {
     if (!videoEl) return;
+
+    if (videoEl.muted) videoEl.muted = false;
 
     if (videoEl.volume === 0) {
       videoEl.volume = previousVolume.current;
