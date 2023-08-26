@@ -61,6 +61,8 @@ const VolumeButton = () => {
     (percent: number) => {
       if (!videoEl) return;
 
+      if (videoEl.muted) videoEl.muted = false;
+
       videoEl.volume = percent / 100;
     },
     [videoEl]
