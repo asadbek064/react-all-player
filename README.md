@@ -59,6 +59,14 @@ import ReactAllPlayer from 'react-all-player';
 />;
 ```
 
+### For NextJS 
+Dynamically import ReactAllPlayer to ensure it's only loaded on the client-side
+```jsx
+import dynamic from "next/dynamic";
+const ReactAllPlayer = dynamic(() => import('react-all-player'), {
+  ssr: false,
+});
+```
 
 ## Props
 
