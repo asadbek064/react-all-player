@@ -2,7 +2,7 @@
 
 react-all-player is a simple, lightweight, accessible and customizable React media player that supports modern browsers.
 
-[Checkout the demo](https://reactallplayer.asadbek.dev)
+[Checkout the demo](https://reactallplayer.asadk.dev)
 
 [![npm version](https://img.shields.io/npm/v/react-all-player.svg)](https://www.npmjs.com/package/react-all-player) 
 
