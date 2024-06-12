@@ -6,7 +6,7 @@ react-all-player is a simple, lightweight, accessible and customizable React med
 
 [![npm version](https://img.shields.io/npm/v/react-all-player.svg)](https://www.npmjs.com/package/react-all-player) 
 
-[![Screenshot of react-all-player ](https://cdn.discordapp.com/attachments/1013281108508561488/1144321837661179965/image.png)](https://reactallplayer.asadbek.dev)
+[![Screenshot of react-all-player ](https://iili.io/d9HeQAN.md.png)](https://reactallplayer.asadk.dev)
 # Features
 
 - 📼 **HTML Video & Audio, YouTube & Vimeo** - support for the major formats
