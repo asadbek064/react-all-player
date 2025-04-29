@@ -17,7 +17,7 @@ react-all-player is a simple, lightweight, accessible and customizable React med
 - 🎛 **API** - toggle playback, volume, seeking, and more through a standardized API
 - 🎤 **Events** - no messing around with Vimeo and YouTube APIs, all events are standardized across formats
 - 🔎 **Fullscreen** - supports native fullscreen with fallback to "full window" modes
-- ⌨️ **Shortcuts - supports keyboard shortcuts
+- ⌨️ **Shortcuts** - supports keyboard shortcuts
 - 🖥 **Picture-in-Picture** - supports picture-in-picture mode
 - 📱 **Playsinline** - supports the `playsinline` attribute
 - 🏎 **Speed controls** - adjust speed on the fly
