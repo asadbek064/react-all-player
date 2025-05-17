@@ -27,7 +27,7 @@ react-all-player is a simple, lightweight, accessible and customizable React med
 ## Usage
 
 ```bash
-npm install react-all-player # or yarn add react-all-player
+pnpm install react-all-player
 ```
 
 ```jsx
@@ -56,6 +56,7 @@ import ReactAllPlayer from 'react-all-player';
       file: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt',
     },
   ]}
+  poster="https://pub-1ee15f86c7e94066bcff56e6e7ce5c02.r2.dev/View_From_A_Blue_Moon_Trailer-HD.jpg"
 />;
 ```
 
@@ -88,7 +89,7 @@ react-all-player accepts video element props and these specific props
 | `hotkeys`         | [Hotkey](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L25)[]                    | Hotkeys (shortcuts)                                         | [Default Hotkeys](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)      | `false`  |
 | `components`      | [Component](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L99)[] | See [Customization](#customization)                         | [Default components](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)   | `false`  |
 | `thumbnail`       | string                                                                                                 | Thumbnails on progress bar hover                            | `null`                                                                                                          | `false`  |
-
+| `poster`       | string                                                                                                 | Video poster image on load                           | `null`                                                                                                          | `false`  |
 ## Customization
 
 You can customize the player by passing defined components with `components` props. See [defined components](https://github.com/asadbek064/react-all-player/blob/main/src/contexts/VideoPropsContext.tsx#L46)

@@ -32,6 +32,7 @@ export interface PlayerProps extends React.HTMLAttributes<HTMLVideoElement> {
   preferQuality?: (qualities: string[]) => string;
   hlsVersion?: string;
   dashVersion?: string;
+  poster?: string;
 }
 
 const shouldPlayHls = (source: Source) =>
@@ -40,7 +41,35 @@ const shouldPlayHls = (source: Source) =>
 const shouldPlayDash = (source: Source) =>
   source.file.includes('mpd') || source.type === 'dash';
 
-const noop = () => {};
+const noop = () => { };
+
+const playIconOverlayStyles: React.CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  pointerEvents: 'none',
+  zIndex: 2,
+};
+
+const playIconStyles: React.CSSProperties = {
+  width: '64px',
+  height: '64px',
+  color: 'white',
+  opacity: 0,
+  filter: 'drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5))',
+  transition: 'opacity 0.3s ease-in',
+};
+
+const containerStyles: React.CSSProperties = {
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+};
 
 const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
   (
@@ -59,6 +88,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
       preferQuality,
       hlsVersion,
       dashVersion,
+      poster,
       ...props
     },
     ref
@@ -67,6 +97,8 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
     const hls = React.useRef<Hls | null>(null);
     const dashjs = React.useRef<DashJS.MediaPlayerClass | null>(null);
     const { state, setState } = useVideoState();
+    const [isPaused, setIsPaused] = React.useState(!autoPlay);
+    const playIconRef = React.useRef<HTMLDivElement>(null);
 
     const DASH_SCRIPT_URL = React.useMemo(
       () => getDashScriptUrl(dashVersion),
@@ -440,19 +472,79 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state?.currentAudio]);
 
+
+    React.useEffect(() => {
+      const videoRef = innerRef.current;
+      if (!videoRef) return;
+
+      const handlePlay = () => {
+        setIsPaused(false);
+        if (playIconRef.current) {
+          playIconRef.current.style.opacity = '0';
+        }
+      };
+
+      const handlePause = () => {
+        setIsPaused(true);
+        if (playIconRef.current) {
+          playIconRef.current.style.opacity = '1';
+        }
+      };
+
+      videoRef.addEventListener('play', handlePlay);
+      videoRef.addEventListener('pause', handlePause);
+
+      // Initial state
+      setIsPaused(!autoPlay);
+
+      return () => {
+        videoRef.removeEventListener('play', handlePlay);
+        videoRef.removeEventListener('pause', handlePause);
+      };
+    }, [autoPlay]);
+
     return (
-      <video
-        ref={playerRef}
-        autoPlay={autoPlay}
-        muted={muted}
-        preload="auto"
-        className={styles.video}
-        playsInline
-        crossOrigin="anonymous"
-        {...props}
-      >
-        {children}
-      </video>
+      <div style={containerStyles}>
+        {/* Play icon overlay */}
+        <div style={playIconOverlayStyles}>
+          <div 
+            ref={playIconRef} 
+            style={{
+              ...playIconStyles,
+              opacity: isPaused ? 1 : 0, // Set initial state
+            }}
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="100%" 
+              height="100%" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className="lucide lucide-play-icon lucide-play"
+            >
+              <polygon points="6 3 20 12 6 21 6 3"/>
+            </svg>
+          </div>
+        </div>
+
+        <video
+          ref={playerRef}
+          autoPlay={autoPlay}
+          muted={muted}
+          preload="auto"
+          className={styles.video}
+          playsInline
+          crossOrigin="anonymous"
+          poster={poster}
+          {...props}
+        >
+          {children}
+        </video>
+      </div>
     );
   }
 );

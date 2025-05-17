@@ -1,6 +1,5 @@
 import React from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import editorTheme from 'prism-react-renderer/themes/nightOwl'
 import Player from 'react-all-player'
 import { buildAbsoluteURL } from 'url-toolkit'
 
@@ -24,8 +23,8 @@ const initialCode = `
       }
     ]}
     className="object-contain w-full h-full"
-    autoPlay
     muted
+    poster="https://pub-1ee15f86c7e94066bcff56e6e7ce5c02.r2.dev/View_From_A_Blue_Moon_Trailer-HD.jpg"
   />
 `
 
@@ -33,7 +32,6 @@ const App: React.FC = () => {
   return (
     <div className="text-white w-full h-full gap-4">
       <LiveProvider
-        theme={editorTheme}
         scope={{ Player, buildAbsoluteURL }}
         code={initialCode}
       >
