@@ -132,20 +132,38 @@ Similarly, you can use either the video ID or a full Vimeo URL:
 />
 ```
 
-### Features
+### Supported Features
 
-- All standard player controls work with YouTube and Vimeo
-- Autoplay, muted, and other props are fully supported
-- Unified event handling across all video types
-- Responsive and accessible
+YouTube and Vimeo embeds support most player features with a unified API:
+
+**Fully Supported:**
+- **Play/Pause** - Standard play and pause controls
+- **Progress Bar** - Seek to any position with drag or click
+- **Volume Control** - Adjust volume and mute/unmute
+- **Playback Speed** - Adjust speed from 0.25x to 2x
+- **Forward/Backward** - 10-second skip buttons
+- **Keyboard Shortcuts** - All standard shortcuts work
+- **Custom Controls** - Use your own control UI
+- **Click to Play** - Click overlay to play/pause
+- **Autoplay & Muted** - Props work as expected
+- **Responsive** - Automatically adapts to container size
+
+**Limitations:**
+- **Screenshots** - Not available due to browser cross-origin restrictions
+- **Subtitles** - Use YouTube/Vimeo native captions instead
+- **Preview Thumbnails** - Not available for embedded videos
+
+**How it works:** All controls are unified across video types. The player automatically detects whether you're using HTML5 video, YouTube, or Vimeo and handles the appropriate API calls behind the scenes.
 
 ## Props
 
 react-all-player accepts video element props and these specific props
 
+**Note:** For YouTube and Vimeo videos, the `sources` prop accepts either video IDs or full URLs. The `type` field can be `'youtube'` or `'vimeo'`, or it will be auto-detected from the URL format.
+
 | Prop              | Type                                                                                                   | Description                                                 | Default                                                                                                         | Required |
 | ----------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------- |
-| `sources`         | [Source](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L1)[]                     | An array of sources contain `file`, `label` and `type`      | `null`                                                                                                          | `true`   |
+| `sources`         | [Source](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L1)[]                     | An array of sources contain `file`, `label` and `type`. For YouTube/Vimeo: use video ID or full URL      | `null`                                                                                                          | `true`   |
 | `subtitles`       | [Subtitle](https://github.com/asadbek064/react-all-player/blob/main/src/types/types.ts#L6)[]                   | An array of subtitles contain `file`, `lang` and `language` | `null`                                                                                                          | `false`  |
 | `hlsRef`          | `React.MutableRefObject<Hls \| null>`                                                                  | `hls.js` instance ref                                       | `React.createRef()`                                                                                             | `false`  |
 | `dashRef`         | `React.MutableRefObject<DashJS.MediaPlayerClass \| null>`                                              | `dashjs` instance ref                                       | `React.createRef()`                                                                                             | `false`  |
