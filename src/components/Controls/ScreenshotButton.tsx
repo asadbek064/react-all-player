@@ -26,6 +26,10 @@ const ScreenshotButton = () => {
     download(imageUrl, fileName);
   };
 
+  // Hide screenshot button for embedded players (YouTube/Vimeo)
+  // Screenshots not supported due to cross-origin restrictions
+  if (!videoEl) return null;
+
   return (
     <ControlButton tooltip={i18n.controls.screenshot} onClick={snapshot}>
       <CameraIcon />

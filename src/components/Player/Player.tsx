@@ -6,6 +6,9 @@ import styles from './Player.module.css';
 import Hls from '../../types/hls.js';
 import DashJS from '../../types/dashjs';
 import loadScript from '../../utils/load-script';
+import { isYouTubeSource, isVimeoSource } from '../../utils/embed-utils';
+import { YouTubePlayer } from '../YouTubePlayer/YouTubePlayer';
+import { VimeoPlayer } from '../VimeoPlayer/VimeoPlayer';
 
 const HLS_VARIABLE_NAME = 'Hls';
 const DASH_VARIABLE_NAME = 'dashjs';
@@ -503,27 +506,57 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
       };
     }, [autoPlay]);
 
+    // Detect embed sources
+    const currentSource = sources[0]; // Use first source for embed detection
+    const isYouTube = isYouTubeSource(currentSource);
+    const isVimeo = isVimeoSource(currentSource);
+
+    // Render YouTube player
+    if (isYouTube) {
+      return (
+        <YouTubePlayer
+          source={currentSource}
+          autoPlay={autoPlay}
+          muted={muted}
+          onReady={() => onInit?.(innerRef.current!)}
+        />
+      );
+    }
+
+    // Render Vimeo player
+    if (isVimeo) {
+      return (
+        <VimeoPlayer
+          source={currentSource}
+          autoPlay={autoPlay}
+          muted={muted}
+          onReady={() => onInit?.(innerRef.current!)}
+        />
+      );
+    }
+
+    // Render standard HTML5 video player with HLS/DASH support
     return (
       <div style={containerStyles}>
         {/* Play icon overlay */}
         <div style={playIconOverlayStyles}>
-          <div 
-            ref={playIconRef} 
+          <div
+            ref={playIconRef}
             style={{
               ...playIconStyles,
               opacity: isPaused ? 1 : 0, // Set initial state
             }}
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="100%" 
-              height="100%" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-play-icon lucide-play"
             >
               <polygon points="6 3 20 12 6 21 6 3"/>

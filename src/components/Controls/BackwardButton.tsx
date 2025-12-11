@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import ControlButton from './ControlButton';
 import BackwardIcon from '../icons/BackwardIcon';
 import { useVideo } from '../../contexts/VideoContext';
@@ -7,16 +7,31 @@ import { IndicatorRef } from '../Indicator/Indicator';
 import { useVideoProps } from '../../contexts/VideoPropsContext';
 import { stringInterpolate } from '../../utils';
 
+const SEEK_SECONDS = 10;
+
 const BackwardButton = () => {
   const { videoEl } = useVideo();
   const { i18n } = useVideoProps();
-  const backwardIndicator = useRef<IndicatorRef>(null);
+  const backwardIndicator = React.useRef<IndicatorRef>(null);
 
   const handleClick = () => {
-    if (!videoEl) return;
-
     backwardIndicator.current?.show();
-    videoEl.currentTime = videoEl.currentTime - 10;
+
+    if (videoEl) {
+      videoEl.currentTime = Math.max(0, videoEl.currentTime - SEEK_SECONDS);
+      return;
+    }
+
+    const yt = (window as any).__youtubePlayer;
+    if (yt) {
+      yt.seekTo(Math.max(0, yt.currentTime - SEEK_SECONDS), true);
+      return;
+    }
+
+    const vimeo = (window as any).__vimeoPlayer;
+    if (vimeo) {
+      vimeo.setCurrentTime(Math.max(0, vimeo.currentTime - SEEK_SECONDS));
+    }
   };
 
   return (

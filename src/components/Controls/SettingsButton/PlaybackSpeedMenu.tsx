@@ -11,12 +11,42 @@ const PlaybackSpeedMenu = () => {
   const { videoEl } = useVideo();
   const { i18n } = useVideoProps();
 
-  const currentSpeed = videoEl?.playbackRate || 1;
+  // Get current speed from HTML5 video or embedded players
+  let currentSpeed = 1;
+  if (videoEl) {
+    currentSpeed = videoEl.playbackRate;
+  } else {
+    const yt = (window as any).__youtubePlayer;
+    const vimeo = (window as any).__vimeoPlayer;
+    if (yt) {
+      currentSpeed = yt.playbackRate || 1;
+    } else if (vimeo) {
+      currentSpeed = vimeo.playbackRate || 1;
+    }
+  }
 
   const handleChangeSpeed = (value: string) => {
-    if (!videoEl) return;
+    const rate = Number(value);
 
-    videoEl.playbackRate = Number(value);
+    // Handle embedded players (YouTube/Vimeo)
+    if (!videoEl) {
+      const yt = (window as any).__youtubePlayer;
+      if (yt) {
+        yt.playbackRate = rate;
+        return;
+      }
+
+      const vimeo = (window as any).__vimeoPlayer;
+      if (vimeo) {
+        vimeo.playbackRate = rate;
+        return;
+      }
+
+      return;
+    }
+
+    // Handle standard HTML5 video
+    videoEl.playbackRate = rate;
   };
 
   return (

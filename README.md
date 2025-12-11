@@ -60,7 +60,7 @@ import ReactAllPlayer from 'react-all-player';
 />;
 ```
 
-### For NextJS 
+### For NextJS
 Dynamically import ReactAllPlayer to ensure it's only loaded on the client-side
 ```jsx
 import dynamic from "next/dynamic";
@@ -68,6 +68,76 @@ const ReactAllPlayer = dynamic(() => import('react-all-player'), {
   ssr: false,
 });
 ```
+
+## YouTube and Vimeo Support
+
+react-all-player makes it easy to embed YouTube and Vimeo videos with the same simple API. Just provide the video ID or URL!
+
+### YouTube
+
+You can use either the video ID or a full YouTube URL:
+
+```jsx
+// Using video ID with explicit type
+<ReactAllPlayer
+  sources={[
+    {
+      file: 'bTqVqk7FSmY',
+      type: 'youtube'
+    }
+  ]}
+/>
+
+// Using full YouTube URL (auto-detected)
+<ReactAllPlayer
+  sources={[
+    {
+      file: 'https://www.youtube.com/watch?v=bTqVqk7FSmY'
+    }
+  ]}
+/>
+
+// Using short YouTube URL (auto-detected)
+<ReactAllPlayer
+  sources={[
+    {
+      file: 'https://youtu.be/bTqVqk7FSmY'
+    }
+  ]}
+/>
+```
+
+### Vimeo
+
+Similarly, you can use either the video ID or a full Vimeo URL:
+
+```jsx
+// Using video ID with explicit type
+<ReactAllPlayer
+  sources={[
+    {
+      file: '76979871',
+      type: 'vimeo'
+    }
+  ]}
+/>
+
+// Using full Vimeo URL (auto-detected)
+<ReactAllPlayer
+  sources={[
+    {
+      file: 'https://vimeo.com/76979871'
+    }
+  ]}
+/>
+```
+
+### Features
+
+- All standard player controls work with YouTube and Vimeo
+- Autoplay, muted, and other props are fully supported
+- Unified event handling across all video types
+- Responsive and accessible
 
 ## Props
 
@@ -152,7 +222,13 @@ You can access to the `video` element by passing `ref` to react-all-player and u
 
 ## Supported formats
 
-react-all-player supports all `video` element supported formats and `HLS` format
+react-all-player supports:
+
+- **HTML5 Video**: All native video formats (MP4, WebM, Ogg, etc.)
+- **HLS**: HTTP Live Streaming via hls.js
+- **DASH**: Dynamic Adaptive Streaming via dash.js
+- **YouTube**: YouTube videos via iframe embed
+- **Vimeo**: Vimeo videos via player API
 
 ## Contributing
 

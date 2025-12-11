@@ -1,11 +1,37 @@
 {
-  "version": "2.0.10",
-  "license": "MIT",
+  "name": "react-all-player",
+  "version": "2.1.0",
+  "module": "dist/index.js",
+  "license": "Apache-2.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "engines": {
-    "node": ">=10"
+  "author": "Asadbek Karimov <contact@asadk.dev>",
+  "bugs": {
+    "url": "https://github.com/asadbek064/react-all-player/issues"
   },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asadbek064/react-all-player.git"
+  },
+  "keywords": [
+    "react-player",
+    "video-player",
+    "HTML5 Video",
+    "HTML5 Audio",
+    "Media Player",
+    "DASH",
+    "HLS",
+    "youtube",
+    "vimeo",
+    "streaming",
+    "accessible",
+    "responsive",
+    "customizable",
+    "picture-in-picture",
+    "captions",
+    "subtitles"
+  ],
+  "homepage": "https://reactallplayer.asadk.dev",
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
@@ -33,9 +59,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-all-player",
-  "author": "asadbek064",
-  "module": "dist/index.js",
   "size-limit": [
     {
       "path": "./dist/index.js",
@@ -87,19 +110,7 @@
   "directories": {
     "example": "example"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/asadbek064/react-all-player.git"
-  },
-  "keywords": [
-    "react-player",
-    "video",
-    "player",
-    "hlsjs",
-    "dashjs"
-  ],
-  "bugs": {
-    "url": "https://github.com/asadbek064/react-all-player/issues"
-  },
-  "homepage": "https://github.com/asadbek064/react-all-player#readme"
+  "engines": {
+    "node": ">=10"
+  }
 }

@@ -1,7 +1,7 @@
 export type Source = {
   file: string;
   label?: string;
-  type?: string | 'hls' | 'dash';
+  type?: string | 'hls' | 'dash' | 'youtube' | 'vimeo';
 };
 
 export type Subtitle = {

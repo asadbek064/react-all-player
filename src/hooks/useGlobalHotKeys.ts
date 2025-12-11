@@ -28,6 +28,9 @@ const useGlobalHotKeys = (videoEl: HTMLVideoElement) => {
 
       if (preventDefault) event.preventDefault();
 
+      // Skip hotkey if video element is not available (e.g., for embedded players)
+      if (!videoEl) return;
+
       fn(videoEl);
     };
 

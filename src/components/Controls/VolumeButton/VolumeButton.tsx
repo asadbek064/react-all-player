@@ -25,10 +25,10 @@ const VolumeButton = () => {
   const previousVolume = useRef(videoState.volume);
 
   useEffect(() => {
-    if(videoEl?.muted) {
+    if (videoEl?.muted) {
       videoState.volume = 0;
     }
-  })
+  });
 
   const VolumeComponent = useMemo(() => {
     const entries = Object.entries(VolumeComponents).sort(
@@ -45,22 +45,63 @@ const VolumeButton = () => {
   }, [videoState.volume]);
 
   const handleClick = useCallback(() => {
-    if (!videoEl) return;
+    // HTML5
+    if (videoEl) {
+      if (videoEl.muted) videoEl.muted = false;
+      if (videoEl.volume === 0) videoEl.volume = previousVolume.current;
+      else {
+        previousVolume.current = videoEl.volume;
+        videoEl.volume = 0;
+      }
+      return;
+    }
 
-    if (videoEl.muted) videoEl.muted = false;
+    // YouTube
+    const yt = (window as any).__youtubePlayer;
+    if (yt) {
+      if (yt.muted) yt.muted = false;
+      if (yt.volume === 0) yt.volume = previousVolume.current;
+      else {
+        previousVolume.current = yt.volume;
+        yt.volume = 0;
+      }
+      return;
+    }
 
-    if (videoEl.volume === 0) {
-      videoEl.volume = previousVolume.current;
-    } else {
-      previousVolume.current = videoEl.volume;
-      videoEl.volume = 0;
+    // Vimeo
+    const vimeo = (window as any).__vimeoPlayer;
+    if (vimeo) {
+      if (vimeo.volume === 0) vimeo.volume = previousVolume.current || 1;
+      else {
+        previousVolume.current = vimeo.volume;
+        vimeo.volume = 0;
+      }
     }
   }, [videoEl]);
 
   const handleVolumeChange = useCallback(
     (percent: number) => {
-      if (!videoEl) return;
+      // Handle embedded players (YouTube/Vimeo)
+      if (!videoEl) {
+        // Try YouTube player
+        const yt = (window as any).__youtubePlayer;
+        if (yt) {
+          if (yt.muted) yt.muted = false;
+          yt.volume = percent / 100;
+          return;
+        }
 
+        // Try Vimeo player
+        const vimeo = (window as any).__vimeoPlayer;
+        if (vimeo) {
+          vimeo.volume = percent / 100;
+          return;
+        }
+
+        return;
+      }
+
+      // Handle standard HTML5 video
       if (videoEl.muted) videoEl.muted = false;
 
       videoEl.volume = percent / 100;

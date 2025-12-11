@@ -20,8 +20,38 @@ const PlayPauseButton = () => {
   const { videoState, videoEl } = useVideo();
 
   const handleClick = () => {
-    if (!videoEl) return;
+    // Handle embedded players (YouTube/Vimeo)
+    if (!videoEl) {
+      // Try YouTube player
+      const youtubePlayer = (window as any).__youtubePlayer;
+      if (youtubePlayer) {
+        if (videoState.paused) {
+          playIndicator.current?.show();
+          youtubePlayer.play();
+        } else {
+          pauseIndicator.current?.show();
+          youtubePlayer.pause();
+        }
+        return;
+      }
 
+      // Try Vimeo player
+      const vimeoPlayer = (window as any).__vimeoPlayer;
+      if (vimeoPlayer) {
+        if (videoState.paused) {
+          playIndicator.current?.show();
+          vimeoPlayer.play();
+        } else {
+          pauseIndicator.current?.show();
+          vimeoPlayer.pause();
+        }
+        return;
+      }
+
+      return;
+    }
+
+    // Handle standard HTML5 video
     if (videoState.paused) {
       playIndicator.current?.show();
       videoEl.play();
