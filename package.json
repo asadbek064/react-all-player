@@ -1,6 +1,6 @@
 {
   "name": "react-all-player",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "module": "dist/index.js",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   "bugs": {
     "url": "https://github.com/asadbek064/react-all-player/issues"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/asadbek064/react-all-player.git"
   },
