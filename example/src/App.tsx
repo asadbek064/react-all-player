@@ -2,6 +2,7 @@ import React from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import Player from 'react-all-player'
 import { buildAbsoluteURL } from 'url-toolkit'
+import YouTubeVimeoDemo from './youtube-vimeo-demo'
 const examples = {
   example1: `
 // Example 1: MP4 Video with Subtitles
@@ -67,8 +68,10 @@ const App: React.FC = () => {
           }}
           className="bg-[#0B0E14]"
         />
+
         <LiveError />
       </LiveProvider>
+        <YouTubeVimeoDemo />
     </div>
   )
 }

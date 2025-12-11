@@ -1,8 +1,8 @@
 .container {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  /* 16:9 aspect ratio */
+  padding-top: 56.25%;
 }
 
 .player {
@@ -11,10 +11,14 @@
 }
 
 .player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
 }
+
 
 .error {
   display: flex;
