@@ -5,12 +5,12 @@ Thanks for contributing to react-all-player!
 ## Install
 
 ```bash
-git clone https://github.com/asadbek064/ReactVidPlayer.git
-cd ReactVidPlayer
-npm install # or yarn
-npm start # or yarn start
+git clone git@github.com:asadbek064/react-all-player.git
+cd react-all-player
+pnpm install # or yarn or pnpm
+pnpm start # or yarn start
 cd example
-npm start # or yarn start
+pnpm start # or yarn start
 open http://localhost:3000
 ```
 
@@ -23,5 +23,5 @@ There is **no need** to build or commit files in `dist` after making changes. Th
 This project uses [standard](https://github.com/feross/standard) code style. Be sure to lint the code after making changes and fix any issues that come up.
 
 ```bash
-npm run lint # or yarn lint
+pnpm run lint # or yarn lint
 ```
